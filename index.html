@@ -3,146 +3,156 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>kid mouse</title>
 	<link rel="stylesheet" href="animate.css">
 	<style>
-	#wrap{
-		width:1200px;		
-		height: 1100px;
-		background: #000;
+	#box{
+		width:680px;
+		height: 744px;
+		padding:20px;
+		background: url(image/bg.png);
+		background-size: 100% auto;
+		position: relative;
 	}
-	li.box{
-		width:300px;
+	#wrap{
+		position: absolute;
+	    bottom: 20px;
+	    width: 100%;
+	}
+	li.single{
+		width:133px;
 		height: 200px;
 		float: left;
 		list-style: none;
-		margin-top: 200px;
+		margin-top: 20px;
 		position: relative;
 	}
-	img.inner{
-		width:133px;
+	.inner{
+		width:90%;
+		height: 100px;
 		position: absolute;
-		top:87px;
+		bottom: 0;
 		left:50%;
 		margin-left: -66px;
+		z-index: 2;
 	}
 	
 	.man{
+		background: url(image/man.png);
+		background-size: 100% auto;
 	}
 	.man-break{
-		visibility: hidden;
+		background: url(image/man-break.png);
+		background-size: 100% auto;
 	}
 	.boom{
-		visibility: hidden;
+		background: url(image/boom.png);
+		background-size: 100% auto;
 	}
 	.boom-break{
-		visibility: hidden;
+		background: url(image/boom-break.png);
+		background-size: 100% auto;
+	}
+	.hole{
+		width:100%;
+		position: absolute;
+    	top: 73px;
+    	left:0;
+    	z-index: 1;
 	}
 	.bottom{
-		width:300px;
-		height: 100px;
+		width:100%;
+		height: 110px;
 		position: absolute;
 		left:0;
 		bottom: 0;
+		z-index: 3;
 	}
-	.hole{
-		width:300px;
-		height: 18px;
-		background: #7A470B;
-		position: absolute;
-    	top: 85px;
-    	left:0;
-	}
+	
 	.up{
-		transform: translate(0,-100px);
+		transform: translate(0,-110px);
 	}
 	.down{
-		transform: translate(0,100px);
+		transform: translate(0,110px);
 	}
 	.animated {
-		transition:transform 0.3s ease-out;
+		transition:transform 0.5s ease-out;
 }
 	</style>
 </head>
 <body>
+	<div id="box">
 	<div id="wrap">
-		<li class="box">
-			<img class="man inner animated" src="image/man.png"/>
-			<img class="man-break animated" src="image/man-break.png"/>
-			<img class="boom animated" src="image/boom.png"/>
-			<img class="boom-break " src="image/boom-break.png"/>
+		<li class="single">
+			<div class="inner man animated"></div>
 			<img class="hole" src="image/hold.png"/>
 			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="box">
-			<img class="man inner animated" src="image/man.png"/>
-			<img class="man-break animated" src="image/man-break.png"/>
-			<img class="boom animated" src="image/boom.png"/>
-			<img class="boom-break " src="image/boom-break.png"/>
+		<li class="single">
+			<div class="inner man animated"></div>
 			<img class="hole" src="image/hold.png"/>
 			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="box">
-			<img class="man inner animated" src="image/man.png"/>
-			<img class="man-break animated" src="image/man-break.png"/>
-			<img class="boom animated" src="image/boom.png"/>
-			<img class="boom-break " src="image/boom-break.png"/>
+		<li class="single">
+			<div class="inner man animated"></div>
 			<img class="hole" src="image/hold.png"/>
 			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="box">
-			<img class="man inner animated" src="image/man.png"/>
-			<img class="man-break animated" src="image/man-break.png"/>
-			<img class="boom animated" src="image/boom.png"/>
-			<img class="boom-break " src="image/boom-break.png"/>
+		<li class="single">
+			<div class="inner man animated"></div>
 			<img class="hole" src="image/hold.png"/>
 			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="box">
-			<img class="man inner animated" src="image/man.png"/>
-			<img class="man-break animated" src="image/man-break.png"/>
-			<img class="boom animated" src="image/boom.png"/>
-			<img class="boom-break " src="image/boom-break.png"/>
+		<li class="single">
+			<div class="inner man animated"></div>
 			<img class="hole" src="image/hold.png"/>
 			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="box">
-			<img class="man inner animated" src="image/man.png"/>
-			<img class="man-break animated" src="image/man-break.png"/>
-			<img class="boom animated" src="image/boom.png"/>
-			<img class="boom-break " src="image/boom-break.png"/>
+		<li class="single">
+			<div class="inner man animated"></div>
 			<img class="hole" src="image/hold.png"/>
 			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-
-		
+		</div>
 	</div>
 	<script type="text/javascript" src="zepto.js"></script>
 	<script>
 (function fn(){
 	var tmp = Math.ceil(Math.random()*6);
-	console.log(tmp);
+	var boompro = Math.ceil(Math.random()*10);
 	setTimeout(function(){
-		// $($(".man")[tmp-1]).css("visibility","visible");
-		// $($(".man-break")[tmp-1]).css("visibility","visible");
-		$($(".man")[tmp-1]).addClass("up");
-	},200);//间隔
+		if(boompro>6){//出现炸弹的概率
+			$($(".inner")[tmp-1]).removeClass("man").addClass("boom");
+		}else{
+			$($(".inner")[tmp-1]).removeClass("boom").addClass("man");
+		}
+		$($(".inner")[tmp-1]).addClass("up");
+	},300);//下次出现间隔
 	setTimeout(function() {
-		$(".man").removeClass("up");
-
-		
+		$(".inner").removeClass("up");
 		fn();
-	}, 3000);//出现时长
+	}, 1000);//出现时长 速度
 })();
-$(".inner").click(function(e){
+$(".inner").on("touchstart",function(e){
 	var $target = $(e.currentTarget);
 	if($target && $target.hasClass("up")){
-		$target.css("visibility","hidden");
-		$target.removeClass("up");
-		$target.parent().find(".man-break").css("visibility","visible");
-		setTimeout(function(){
-		$(".man-break").addClass("down");
-		},200);
+		if($target.hasClass("boom")){
+			$target.removeClass("boom").addClass("boom-break");
+			$target.removeClass("up");
+			setTimeout(function(){
+				$target.removeClass("boom-break").addClass("man");
+			},500);//下移恢复man
+		}else{
+			$target.removeClass("man").addClass("man-break");
+			$target.removeClass("up");
+			setTimeout(function(){
+				$target.removeClass("man-break").addClass("man");
+			},500);//下移恢复man
+		}
+		
+	}else{
+		//落空提示
 	}
 });
 	</script>
