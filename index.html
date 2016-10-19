@@ -11,70 +11,111 @@
 		height: 1100px;
 		background: #000;
 	}
-	li{
+	li.box{
 		width:300px;
 		height: 200px;
-		background: green;
 		float: left;
 		list-style: none;
 		margin-top: 200px;
-		border:1px solid #fff;
-		border-radius: 200px;
 		position: relative;
 	}
-	.in{
-		width:200px;
-		height: 200px;
-		background: red;
+	img.inner{
+		width:133px;
 		position: absolute;
-		top:0;
+		top:87px;
 		left:50%;
-		margin-left: -100px;
-
+		margin-left: -66px;
+	}
+	
+	.man{
+	}
+	.man-break{
+		visibility: hidden;
+	}
+	.boom{
+		visibility: hidden;
+	}
+	.boom-break{
+		visibility: hidden;
 	}
 	.bottom{
 		width:300px;
 		height: 100px;
-		background: green;
-		border-bottom-left-radius: 200px;
-		border-bottom-right-radius: 200px;
 		position: absolute;
-		bottom:0;
+		left:0;
+		bottom: 0;
+	}
+	.hole{
+		width:300px;
+		height: 18px;
+		background: #7A470B;
+		position: absolute;
+    	top: 85px;
+    	left:0;
 	}
 	.up{
 		transform: translate(0,-100px);
 	}
+	.down{
+		transform: translate(0,100px);
+	}
 	.animated {
-		transition:transform 0.3s;
+		transition:transform 0.3s ease-out;
 }
 	</style>
 </head>
 <body>
 	<div id="wrap">
-		<li class="out">
-			<div class="in animated"></div>
-			<div class="bottom"></div>
+		<li class="box">
+			<img class="man inner animated" src="image/man.png"/>
+			<img class="man-break animated" src="image/man-break.png"/>
+			<img class="boom animated" src="image/boom.png"/>
+			<img class="boom-break " src="image/boom-break.png"/>
+			<img class="hole" src="image/hold.png"/>
+			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="out">
-			<div class="in animated"></div>
-			<div class="bottom"></div>
+		<li class="box">
+			<img class="man inner animated" src="image/man.png"/>
+			<img class="man-break animated" src="image/man-break.png"/>
+			<img class="boom animated" src="image/boom.png"/>
+			<img class="boom-break " src="image/boom-break.png"/>
+			<img class="hole" src="image/hold.png"/>
+			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="out">
-			<div class="in animated"></div>
-			<div class="bottom"></div>
+		<li class="box">
+			<img class="man inner animated" src="image/man.png"/>
+			<img class="man-break animated" src="image/man-break.png"/>
+			<img class="boom animated" src="image/boom.png"/>
+			<img class="boom-break " src="image/boom-break.png"/>
+			<img class="hole" src="image/hold.png"/>
+			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="out">
-			<div class="in animated"></div>
-			<div class="bottom"></div>
+		<li class="box">
+			<img class="man inner animated" src="image/man.png"/>
+			<img class="man-break animated" src="image/man-break.png"/>
+			<img class="boom animated" src="image/boom.png"/>
+			<img class="boom-break " src="image/boom-break.png"/>
+			<img class="hole" src="image/hold.png"/>
+			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="out">
-			<div class="in animated"></div>
-			<div class="bottom"></div>
+		<li class="box">
+			<img class="man inner animated" src="image/man.png"/>
+			<img class="man-break animated" src="image/man-break.png"/>
+			<img class="boom animated" src="image/boom.png"/>
+			<img class="boom-break " src="image/boom-break.png"/>
+			<img class="hole" src="image/hold.png"/>
+			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
-		<li class="out">
-			<div class="in animated"></div>
-			<div class="bottom"></div>
+		<li class="box">
+			<img class="man inner animated" src="image/man.png"/>
+			<img class="man-break animated" src="image/man-break.png"/>
+			<img class="boom animated" src="image/boom.png"/>
+			<img class="boom-break " src="image/boom-break.png"/>
+			<img class="hole" src="image/hold.png"/>
+			<img class="bottom" src="image/box-bottom.png"/>
 		</li>
+
+		
 	</div>
 	<script type="text/javascript" src="zepto.js"></script>
 	<script>
@@ -82,13 +123,28 @@
 	var tmp = Math.ceil(Math.random()*6);
 	console.log(tmp);
 	setTimeout(function(){
-		$($(".in")[tmp-1]).addClass("up");
-	},1000);//间隔
+		// $($(".man")[tmp-1]).css("visibility","visible");
+		// $($(".man-break")[tmp-1]).css("visibility","visible");
+		$($(".man")[tmp-1]).addClass("up");
+	},200);//间隔
 	setTimeout(function() {
-		$(".in").removeClass("up");
+		$(".man").removeClass("up");
+
+		
 		fn();
-	}, 1200);//出现时长
+	}, 3000);//出现时长
 })();
+$(".inner").click(function(e){
+	var $target = $(e.currentTarget);
+	if($target && $target.hasClass("up")){
+		$target.css("visibility","hidden");
+		$target.removeClass("up");
+		$target.parent().find(".man-break").css("visibility","visible");
+		setTimeout(function(){
+		$(".man-break").addClass("down");
+		},200);
+	}
+});
 	</script>
 </body>
 </html>
